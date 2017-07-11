@@ -9,7 +9,15 @@ Student chapters of the IEEE-USA SPAx program have requested a list of our natio
 - Speaker page with details of different talks in that speaker's repertoire and a short bio.
 - A contact page with information on regional contacts for whom the students can reach out to in order to contact each speaker.
 
-## Key Features / Technical Requirements
+## Key Features
 - Only those with an @ieee.org email address can create / log in to access the speakers list.
 - Speaker filtering by location and topic
 - Six or seven select accounts will be able to add new speakers to the list or delete outdated ones.
+
+# Technical Requirements
+  - express
+  - mongo
+  - mongoose
+  - passport
+  - passport-local
+  - passport-local-mongoose
