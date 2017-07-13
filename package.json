@@ -1,0 +1,31 @@
+{
+  "name": "speakerdex",
+  "version": "1.0.0",
+  "description": "## Overview Student chapters of the IEEE-USA SPAx program have requested a list of our national speakers so that they can invite renowned speakers to talk at their events. Today, the students have no way of knowing which speakers are available, who might live in the region, or what topics the speakers have in their repertoire. The committee that runs the SPAx program has the list of all this information, but has not found a way to display it previously. The speakerdex will help student chapters filter through speakers by topic and region to find one that fits the theme of the event they are trying to host at their university.",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
+    "express-handlebars": "^3.0.0",
+    "express": "^4.15.3",
+    "express-session": "^1.15.3",
+    "mongoose": "^4.11.1",
+    "passport": "^0.3.2",
+    "passport-local-mongoose": "^4.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sundikhin/speakerdex.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sundikhin/speakerdex/issues"
+  },
+  "homepage": "https://github.com/sundikhin/speakerdex#readme"
+}

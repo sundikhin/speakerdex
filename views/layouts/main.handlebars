@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Speakerdex</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a href="/">
+        <h1>Speakerdex</h1>
+      </a>
+      <nav>
+        <ul>
+          <li>
+            <a href="/about">About</a>
+          </li>
+          <li>
+            <a href="/speakers">Speakers</a>
+          </li>
+        {{#if user}}
+          <li>
+            <a href="/login">Log Out</a>
+          </li>
+        {{else}}
+          <li>
+            <a href="/signup">Sign Up</a>
+          </li>
+          <li>
+            <a href="/login">Log In</a>
+          </li>
+        {{/if}}
+        </ul>
+      </nav>
+    </header>
+
+    <main role="main">
+      <div class="container">
+        {{#if error}}
+            <p class="danger">{{ error.message}} </p>
+        {{/if}}
+
+        {{{ body }}}
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      Copyright 2017
+    </footer>
+
+  </body>
+</html>

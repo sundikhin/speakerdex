@@ -14,7 +14,7 @@ Student chapters of the IEEE-USA SPAx program have requested a list of our natio
 - Speaker filtering by location and topic
 - Six or seven select accounts will be able to add new speakers to the list or delete outdated ones.
 
-# Technical Requirements
+## Technical Requirements
   - express
   - mongo
   - mongoose
