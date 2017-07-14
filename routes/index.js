@@ -24,7 +24,7 @@ appController.post('/signup', function( req, res ) {
     }
     // local refers to our strategy (local)
     passport.authenticate('local')(req, res, () => {
-      res.redirect('/speakers')
+      res.redirect('/speakers', {user: req.user})
     })
   })
 })
@@ -39,6 +39,7 @@ appController.get('/login', function( req, res ) {
 })
 
 appController.post('/login', passport.authenticate('local'), (req, res) => {
+  console.log(req.user)
   res.redirect('/speakers')
 })
 
@@ -47,17 +48,16 @@ appController.get('/logout', ( req, res ) => {
   res.redirect('/about')
 })
 
-
 // change the following two gets to be within login
 
 appController.get('/', ( req, res ) => {
-  Speaker.find({}).limit(6).exec( ( err, speakers ) => {
-    res.render('index', { speakers })
+  Speaker.find({}, ( err, speakers ) => {
+    res.render('index', { speakers, user: req.user })
   })
 })
 
 appController.get('/about', ( req, res ) => {
-  res.render('about')
+  res.render('about', {user: req.user})
 })
 
 module.exports = appController

@@ -1,1 +1,41 @@
-SPEAKERS
+<div class="speaker">
+  This speaker is awesome!
+
+  <h3>{{ name }}</h3>
+  <p>{{ description }}</p>
+  <p>{{ region }}</p>
+
+  <a href="/speakers/delete/{{ _id }}">Delete</a>
+
+</div>
+
+{{#if topics}}
+  {{#each topics}}
+    <div class="topic">
+      <span class="author">{{ title }}</span>
+      <p>{{ theme }}</p>
+      <p>{{ about }}</p>
+    </div>
+  {{/each }}
+{{/if }}
+
+<form class="new-topic" action="/speakers/{{id}}" method="POST">
+
+  <p>
+    <label for="author">Title:</label>
+    <input type="text" name="title" placeholder="Title" />
+  </p>
+
+  <p>
+    <label for="author">Theme:</label>
+    <input type="text" name="theme" placeholder="Theme" />
+  </p>
+
+  <p>
+    <label for="about">Description:</label>
+    <textarea name="about" id="" rows="8" cols="40"></textarea>
+  </p>
+
+  <button type="submit">Add Topic</button>
+
+</form>

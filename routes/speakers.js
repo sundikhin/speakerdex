@@ -5,30 +5,33 @@ const speakerController = express.Router()
 
 const Speaker = require('../models/speakers.js')
 
-speakerController.get('/', (req, res, next) => {
-  if (req.user && req.user.authenticated) next()
+// (req, res, next) => {
+//   if (req.user && req.user.authenticated) next()
 
-  res.redirect('/login')
-}, (req,res) => {
+//   res.redirect('/login')
+// }
+
+speakerController.get('/', (req,res) => {
   let user = req.user
   console.log( user )
   Speaker.find({}, (err, speakers) => {
-    res.render('speakers/index', { speakers, user })
+    res.render('speakers', { speakers, user })
   })
 })
 
-speakerController.get('/new', (req,res) => {
-  res.render('speakers/new')
+speakerController.get('/add', (req,res) => {
+  res.render('speakers/add')
 })
 
-speakerController.post('/new', (req,res) => {
+speakerController.post('/add', (req,res) => {
   let speaker = new Speaker({
     name: req.body.name,
     description: req.body.description,
     region: req.body.region,
     topics: {
       title: req.body.title,
-      theme: req.body.theme
+      theme: req.body.theme,
+      about: req.body.about
     }
   })
 
@@ -39,7 +42,7 @@ speakerController.post('/new', (req,res) => {
 
 speakerController.get('/:id', (req,res) => {
   Speaker.findOne({ '_id': req.params.id }, ( err, speaker ) => {
-    res.render('speakers/show', speaker)
+    res.render('speakers/view', speaker)
   })
 })
 
@@ -65,6 +68,28 @@ speakerController.post('/edit/:id', (req, res) => {
     speaker.save()
 
     res.redirect(`/speakers/${ speaker._id }`)
+  })
+})
+
+speakerController.get('/delete/:id', ( req, res ) => {
+  Speaker.findOne({ '_id': req.params.id }, ( err, speaker ) => {
+    speaker.remove()
+    res.redirect('/')
+  })
+})
+
+// add topic to speaker
+speakerController.post('/:id', ( req, res ) => {
+  Speaker.findOne({ '_id': req.params.id}, ( err, speaker ) => {
+    speaker.topics.push({
+      title: req.body.title,
+      theme: req.body.theme,
+      about: req.body.about
+    })
+
+    speaker.save()
+
+    res.redirect(`/speakers/${speaker._id}`)
   })
 })
 
