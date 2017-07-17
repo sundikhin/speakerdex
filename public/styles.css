@@ -161,3 +161,53 @@ input[type="submit"] {
   text-align: center;
   margin: 1rem 0;
 }
+
+.delete-edit {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.delete-edit a {
+  text-transform: uppercase;
+  font-size: 12px;
+  margin: 5px;
+}
+
+.speaker-bio {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.speaker-bio .text {
+  margin-left: 15px;
+}
+
+
+/* speaker class on view speaker route */
+.speaker img {
+  width: 250px;
+}
+
+.topic-row {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topic {
+  width: 500px;
+  border-top: #24428F;
+  border-top-style: double;
+  padding-top: 20px;
+}
+
+.topic-title {
+  font-weight: 500;
+}
+
+.foot-note {
+  background-color: lightgray;
+}

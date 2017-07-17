@@ -13,14 +13,14 @@ const Speaker = require('../models/speakers.js')
 
 speakerController.get('/', (req,res) => {
   let user = req.user
-  console.log( user )
   Speaker.find({}, (err, speakers) => {
     res.render('speakers', { speakers, user })
   })
 })
 
 speakerController.get('/add', (req,res) => {
-  res.render('speakers/add')
+  let user = req.user
+  res.render('speakers/add', { user })
 })
 
 speakerController.post('/add', (req,res) => {
@@ -28,11 +28,13 @@ speakerController.post('/add', (req,res) => {
     name: req.body.name,
     description: req.body.description,
     region: req.body.region,
-    topics: {
-      title: req.body.title,
-      theme: req.body.theme,
-      about: req.body.about
-    }
+    image: req.body.image,
+    role: req.body.role
+    // topics: {
+    //   title: req.body.title,
+    //   theme: req.body.theme,
+    //   about: req.body.about
+    // }
   })
 
   speaker.save()
@@ -41,8 +43,9 @@ speakerController.post('/add', (req,res) => {
 })
 
 speakerController.get('/:id', (req,res) => {
+  let user = req.user
   Speaker.findOne({ '_id': req.params.id }, ( err, speaker ) => {
-    res.render('speakers/view', speaker)
+    res.render('speakers/view', {speaker, user})
   })
 })
 
@@ -57,13 +60,8 @@ speakerController.post('/edit/:id', (req, res) => {
     speaker.name = req.body.name
     speaker.description = req.body.description
     speaker.region = req.body.region
-
-    // how to do
-    // speaker.topic = {
-    //   speaker.title: req.body.title,
-    //   speaker.theme: req.body.theme
-    // }
-
+    speaker.image = req.body.image
+    speaker.role = req.body.role
 
     speaker.save()
 
@@ -81,11 +79,12 @@ speakerController.get('/delete/:id', ( req, res ) => {
 // add topic to speaker
 speakerController.post('/:id', ( req, res ) => {
   Speaker.findOne({ '_id': req.params.id}, ( err, speaker ) => {
-    speaker.topics.push({
+    let topicPost = {
       title: req.body.title,
       theme: req.body.theme,
       about: req.body.about
-    })
+    }
+    speaker.topics.push(topicPost)
 
     speaker.save()
 

@@ -39,7 +39,6 @@ appController.get('/login', function( req, res ) {
 })
 
 appController.post('/login', passport.authenticate('local'), (req, res) => {
-  console.log(req.user)
   res.redirect('/speakers')
 })
 

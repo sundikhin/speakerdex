@@ -1,0 +1,29 @@
+<form class="edit-speaker" action="/speakers/edit/{{ id }}" method="POST">
+  <p>
+    <label for="name">Name:</label>
+    <input type="text" name="name" placeholder="Name" value=" {{ name }}"/>
+  </p>
+
+  <p>
+    <label for="name">Role:</label>
+    <input type="text" name="role" placeholder="Role" value="{{ role }}" />
+  </p>
+
+  <p>
+    <label for="description">Description:</label>
+    <textarea name="description" id="" rows="8" cols="40" value="{{ description }}"></textarea>
+  </p>
+
+  <p>
+    <label for="name">Region:</label>
+    <input type="text" name="region" placeholder="Region" value="{{ region }}"/>
+  </p>
+
+  <p>
+    <label for="image">Profile Image:</label>
+    <input type="text" name="image" placeholder="Image URL" value="{{ image }}"/>
+  </p>
+
+  <button type="submit">Submit</button>
+
+</form>
