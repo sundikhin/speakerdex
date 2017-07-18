@@ -20,7 +20,8 @@ appController.post('/signup', function( req, res ) {
   (err, user) => {
     if (err) {
       // HANDLE ERRORS HERE (err.message)
-      return res.render('signup', { user : user, error: err })
+      console.log(err)
+      return res.render('signup', { user : user})
     }
     // local refers to our strategy (local)
     passport.authenticate('local')(req, res, () => {
