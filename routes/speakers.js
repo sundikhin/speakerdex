@@ -30,11 +30,6 @@ speakerController.post('/add', (req,res) => {
     region: req.body.region,
     image: req.body.image,
     role: req.body.role
-    // topics: {
-    //   title: req.body.title,
-    //   theme: req.body.theme,
-    //   about: req.body.about
-    // }
   })
 
   speaker.save()

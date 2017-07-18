@@ -25,7 +25,7 @@ appController.post('/signup', function( req, res ) {
     }
     // local refers to our strategy (local)
     passport.authenticate('local')(req, res, () => {
-      res.redirect('/speakers', {user: req.user})
+      res.redirect('/speakers')
     })
   })
 })
