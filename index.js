@@ -24,7 +24,7 @@ app.set('view engine', 'handlebars')
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use(session({
-    secret: 'TaylorSwiftFan2017',
+    secret: '**********',
     resave: false, // don't resave to the session on every request
     saveUninitialized: false //only save completed logins
 }))
